@@ -19,7 +19,7 @@ body > div{
     font: 700 30px arial;
 }
 .btn__success{
-    background:linear-gradient(rgb(72, 175, 215), rgb(204, 245, 227), rgb(42, 150, 239));
+    background:linear-gradient(rgb(113, 215, 72), rgb(204, 245, 227), rgb(42, 239, 49));
 }
 .btn__fail{
     background: linear-gradient( rgb(254, 84, 81), rgb(250, 177, 177), rgb(234, 41, 47));
@@ -39,16 +39,89 @@ button{
     box-sizing: border-box;
     cursor: pointer;
     box-shadow: 7px 8px 10px rgba(43, 38, 38, 0.9);
-    transition: opacity, box-shadow 0.3s ease;
-
+    /* transition: box-shadow 0.3s linear; */
+    /* animation: FlashButton ease 0.1s; */
 }
 .btn__style--blue{
-    background-color: rgb(40, 203, 168);
+    background-color: rgb(78, 203, 40);
 }
 .btn__style--red{
     background-color: rgb(227, 145, 113);
 }
-.btn__hover:hover{
-    opacity: 0.6;
+
+/* .btn__hover{
+    opacity: 0.8;
     box-shadow: none;
+} */
+
+@keyframes FlashButton{
+    from{
+        box-shadow: none;
+    }
+    to{
+        box-shadow: 7px 8px 10px rgba(43, 38, 38, 0.9);
+    }
+} 
+/* message */
+#message_id{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+.message{
+    min-width: 300px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 10px rgba(75, 75, 75, 0.3);
+    background: rgb(225, 225, 225);
+}
+@keyframes slideToLeft {
+    from {
+        transform: translateX(calc(120%));
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes slideOut {
+    form{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(calc(120%));
+    }
+}
+.message__success{
+    display: flex;
+    border-left: 3px solid rgb(74, 223, 0);
+    align-items: center;
+}
+.message__fail{
+    display: flex;
+    border-left: 3px solid rgb(246, 13, 17);
+    align-items: center;
+}
+.message__content{
+    height: 60px;
+    flex-grow:1;
+}
+.message__title{
+    font-size: 16px;
+    margin: 8px 0;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.message__import{
+    margin: auto;
+    font-size: 12px;
+    color:rgb(69, 69, 69);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.message__icon{
+    padding: 15px;
+    font-size: 20px;
+} 
+.icon-close{
+   font-size: 13px;
+   color:rgb(136, 137, 137);
 }

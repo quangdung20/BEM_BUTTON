@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>BUTTON</title>
 </head>
 <body >
@@ -12,16 +13,101 @@
         <div class="btn btn__success">
             <p class="btn__title">Success!</p>
             <p class="btn__font-style">Congrats! your upload is complete.</p>
-            <button type="button" class="btn__style--blue btn__hover" value="Continue">Continue</button>
+            <button onclick = ClickSuccess() type="button" class="btn__style--blue btn__hover" value="Continue">Continue</button>
         </div>
     </div>
     <div>
         <div class="btn btn__fail">
             <p class="btn__title">Failed!</p>
             <p class="btn__font-style">Oh no! something went wrong.</p>
-            <button type="button" class="btn__style--red btn__hover" value="Try again">Try again</button>
+            <button onclick = ClickFail() type="button" class="btn__style--red btn__hover" value="Try again">Try again</button>
         </div>
     </div>
-
+    <section id = "message_id">
+        
+        <!-- <div class="message">
+            <div class="message__fail">
+                <i class="fa-solid fa-circle-check message__icon" style="color:rgb(250, 8, 8);"></i>
+                <div class="message__content">
+                    <h3 class="message__title">Warning!</h3>
+                    <p  class="message__import">Máy tính của bạn đang offline.</p>
+                </div>
+                <i class="fa-solid fa-xmark message__icon icon-close"></i>
+            </div>
+        </div>  -->
+    </section>
+    <script>
+        function messages(
+                    {title ="",
+                    message = "", 
+                    type='',
+                    duration = 1000})
+                    {
+                        const main =document.getElementById('message_id');
+                        if(main){
+                            const Import = document.createElement('div');
+                            const icons = {
+                            success: 'fa-solid fa-circle-check',
+                            fail: 'fa-solid fa-triangle-exclamation'
+                            }
+                            const icon = icons[type];
+                            const colorIcons = {
+                                success: 'rgb(74, 223, 0)',
+                                fail: 'rgb(246, 13, 17)'
+                            }
+                            const colorICon = colorIcons[type];
+                            const delay = (duration/1000)
+                            Import.classList.add('message_id');
+                            Import.style.animation = `slideToLeft ease 1.6s, slideOut linear 1s ${delay}s forwards`;
+                            Import.innerHTML = 
+                            `<div class="message">
+                                <div class="message__${type}">
+                                    <i class="${icon} message__icon" style = "color: ${colorICon}"></i>
+                                    <div class="message__content">
+                                        <h3 class="message__title">${title}</h3>
+                                        <p class="message__import">${message}</p>
+                                    </div>
+                                    <div class = "message__icon  icon-close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                        <\div>
+                                </div> 
+                            </div> `
+                            main.appendChild(Import);
+                            // settimeout slide
+                            setTimeout(function(){
+                                main.removeChild(Import);
+                            }, duration);
+                            // click close 
+                            Import.onclick = function(a){
+                                if(a.target.closest('.icon-close')){
+                                    main.removeChild(Import);
+                                }
+                            }
+                        
+                    }
+                }
+                const  closeIcon = document.getElementsByClassName('.icon-close')
+                console.log(closeIcon);
+                const  btnClick = document.querySelectorAll(".btn__hover");
+                function ButtonClick(a){
+                        a.style.boxShadow = "none";
+                }
+            function ClickSuccess(){
+                    messages({
+                        title: "Success",
+                        message: "Máy tính của bạn đang online.",
+                        type: 'success',
+                        duration: 10000
+                    })
+                }
+                function ClickFail(){
+                    messages({
+                        title: "Warning!",
+                        message: "Máy tính của bạn đang offline.",
+                        type: 'fail',
+                        duration: 10000
+                    });
+                }
+    </script>
 </body>
 </html>
