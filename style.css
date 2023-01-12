@@ -54,14 +54,14 @@ button{
     box-shadow: none;
 } */
 
-@keyframes FlashButton{
+/* @keyframes FlashButton{
     from{
         box-shadow: none;
     }
     to{
         box-shadow: 7px 8px 10px rgba(43, 38, 38, 0.9);
     }
-} 
+}  */
 /* message */
 #message_id{
     position: fixed;
